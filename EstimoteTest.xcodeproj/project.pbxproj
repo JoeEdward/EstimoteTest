@@ -641,10 +641,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EstimoteTest/EstimoteTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2K75Y2GBH5;
+				DEVELOPMENT_TEAM = GWKQ922JE7;
 				INFOPLIST_FILE = EstimoteTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.maddo.EstimoteTest;
+				PRODUCT_BUNDLE_IDENTIFIER = pers.maddo.EstimoteTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				SWIFT_VERSION = 4.0;
@@ -659,10 +659,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EstimoteTest/EstimoteTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2K75Y2GBH5;
+				DEVELOPMENT_TEAM = GWKQ922JE7;
 				INFOPLIST_FILE = EstimoteTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.maddo.EstimoteTest;
+				PRODUCT_BUNDLE_IDENTIFIER = pers.maddo.EstimoteTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				SWIFT_VERSION = 4.0;

@@ -38,10 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDel
     
     func monitoringManager(_ manager: ESTMonitoringV2Manager, didEnterDesiredRangeOfBeaconWithIdentifier identifier: String) {
         print("Did enter range of \(identifier)")
+        
+        showNotification(title: "Hello", body: "Welcome to the beacon space")
     }
     
     func monitoringManager(_ manager: ESTMonitoringV2Manager, didExitDesiredRangeOfBeaconWithIdentifier indentifier: String) {
         print("did exit range of \(indentifier)")
+        
+        showNotification(title: "Goodbye", body: "You left the beacons range")
     }
     
     func monitoringManager(_ manager: ESTMonitoringV2Manager, didDetermineInitialState state: ESTMonitoringState, forBeaconWithIdentifier identifier: String) {
@@ -54,6 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDel
     
     func monitoringManager(_ manager: ESTMonitoringV2Manager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+    
+    func showNotification(title: String, body: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(
+            identifier: "BeaconNotification", content: content, trigger: nil)
+        let center = UNUserNotificationCenter.current()
+        center.add(request, withCompletionHandler: nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
