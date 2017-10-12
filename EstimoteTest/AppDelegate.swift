@@ -8,16 +8,52 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDelegate {
 
     var window: UIWindow?
 
+    // Make a space for the manager for Estimote Beacons
+    var monitoringManager: ESTMonitoringV2Manager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Link app to Estimote SDK
+        ESTConfig.setupAppID("test-app-kg8", andAppToken: "4c286a273a21f2570cb57c5b09528486")
+        
+        // Create the manager
+        self.monitoringManager = ESTMonitoringV2Manager(desiredMeanTriggerDistance: 1.0, delegate: self)
+        
+        self.monitoringManager.startMonitoring(forIdentifiers: ["375578ae253441b91ecf38116b96f91c"])
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in print("notifications allowed? = \(granted)") }
+        
         return true
+    }
+    
+    func monitoringManager(_ manager: ESTMonitoringV2Manager, didEnterDesiredRangeOfBeaconWithIdentifier identifier: String) {
+        print("Did enter range of \(identifier)")
+    }
+    
+    func monitoringManager(_ manager: ESTMonitoringV2Manager, didExitDesiredRangeOfBeaconWithIdentifier indentifier: String) {
+        print("did exit range of \(indentifier)")
+    }
+    
+    func monitoringManager(_ manager: ESTMonitoringV2Manager, didDetermineInitialState state: ESTMonitoringState, forBeaconWithIdentifier identifier: String) {
+        print("beacon \(identifier) is in state \(state)")
+    }
+    
+    func monitoringManagerDidStart(_ manager: ESTMonitoringV2Manager) {
+        print("manager started with no errors")
+    }
+    
+    func monitoringManager(_ manager: ESTMonitoringV2Manager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
